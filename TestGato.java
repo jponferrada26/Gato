@@ -9,7 +9,7 @@ public class TestGato {
 		do{
 			opcion =menu.gestionar(); 
 			gestionarMenu(opcion,gato);
-		}while(opcion != 6 );
+		}while(opcion != 6 && gato.comprobarMuerto() == false); 
 		
 		
 	}
