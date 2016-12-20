@@ -1,7 +1,4 @@
-/**
- * 
- */
-package Gato;
+package gato;
 
 /**
  * @author Grupo Javier, Guillermo, Pablo, Rafael, Soledad
@@ -12,7 +9,7 @@ public class Gato {
 	private int peso;// el peso lo consideramos en gramos.
 	private String nombre;
 	private String raza;
-	private boolean dormido;// por defecto, está dormido.
+	private boolean dormido;// por defecto, esta dormido.
 	private static final int MAXPESO = 15000;
 	private static final int SOBREPESO = 10000;
 	private static final int ENCLENQUE = 1500;
@@ -25,7 +22,10 @@ public class Gato {
 	 * @param dormido
 	 */
 	public Gato(int peso, String nombre, String raza) {
-		setPeso(peso);
+		if(peso>=MAXPESO || peso<=MINPESO)
+			setPeso(2000);
+		else
+			setPeso(peso);
 		setNombre(nombre);
 		setRaza(raza);
 		setDormido(true);
@@ -126,7 +126,7 @@ public class Gato {
 					cadena += "Tengo hambre";
 					setPeso(getPeso() - 500);
 				} else {
-					cadena += "\n Qué diver...";
+					cadena += "\n Que diver...";
 					setPeso(getPeso() - 500);
 				}
 			} else
@@ -168,4 +168,18 @@ public class Gato {
 		return false;
 	}
 
+	public String toString() {
+		if (!comprobarMuerto()) {
+			if (isDormido() == true) {
+				return "Tu gato esta dormido.";
+			}else
+				return "Hola, soy "+getNombre()+" de raza "+getRaza()+". Peso "+getPeso()+"Gramos";
+		}else
+			return "Tu gato esta muerto."; 
+		
+	}
+	
+	
+
 }
+
